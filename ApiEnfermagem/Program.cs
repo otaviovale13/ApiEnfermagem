@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using TIIApi.Data;
+using ApiEnfermagem.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +9,9 @@ builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<DBContext>(options =>
-    options.UseSqlServer(strConn));
+var strConn = builder.Environment.IsDevelopment()
+    ? builder.Configuration.GetConnectionString("strConnExterna")
+    : builder.Configuration.GetConnectionString("strConnInterna");
 
 var app = builder.Build();
 

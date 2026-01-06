@@ -14,5 +14,7 @@ namespace ApiEnfermagem.Controllers
         {
             _context = context;
         }
+
+        // Aqui você pode adicionar ações para gerenciar Tópicos e Artigos
     }
 }

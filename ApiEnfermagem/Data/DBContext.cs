@@ -1,4 +1,5 @@
-﻿using ApiEnfermagem.Models.Security;
+﻿using ApiEnfermagem.Models.Content;
+using ApiEnfermagem.Models.Security;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiEnfermagem.Data

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ApiEnfermagem.Models.Security
 {
@@ -24,7 +25,7 @@ namespace ApiEnfermagem.Models.Security
 
         public DateTime? UpdatedAt { get; set; }
 
-        // Propriedade de Navegação: Um Artigo pertence a um Tópico
+        [JsonIgnore]
         [ForeignKey("TopicID")]
         public virtual Topic? Topic { get; set; }
     }

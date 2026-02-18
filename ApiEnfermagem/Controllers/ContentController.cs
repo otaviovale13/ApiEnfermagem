@@ -23,13 +23,12 @@ namespace ApiEnfermagem.Controllers
         {
             var resultado = new ArtigosItem();
 
-            // 2. Busca os Tópicos (que são tabela de verdade)
-            resultado.Topicos = _context.Topics.ToList();
+            resultado.Topicos = _context.Topics
+                                .Include(t => t.Images)
+                                .ToList();
 
-            // 3. Busca os Artigos (que são tabela de verdade)
             resultado.Artigos = _context.Articles.ToList();
 
-            // 4. Retorna o pacote completo
             return Ok(resultado);
         }
     }

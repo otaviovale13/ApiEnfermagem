@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ApiEnfermagem.Models.Content;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApiEnfermagem.Models.Security
@@ -21,7 +22,7 @@ namespace ApiEnfermagem.Models.Security
 
         public int DisplayOrder { get; set; } = 0;
 
-        // Propriedade de Navegação: Um Tópico tem vários Artigos
         public virtual ICollection<Article> Articles { get; set; } = new List<Article>();
+        public virtual ICollection<TopicImage> Images { get; set; } = new List<TopicImage>();
     }
 }

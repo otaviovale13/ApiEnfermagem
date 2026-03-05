@@ -14,6 +14,8 @@ namespace ApiEnfermagem.Data
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<TopicImage> TopicImages { get; set; }
+        public DbSet<ForumPost> ForumPosts { get; set; }
+        public DbSet<ForumReply> ForumReplies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,6 +29,12 @@ namespace ApiEnfermagem.Data
                 .HasOne(a => a.Topic)
                 .WithMany(t => t.Articles)
                 .HasForeignKey(a => a.TopicID)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ForumReply>()
+                .HasOne(r => r.Post)
+                .WithMany(p => p.Replies)
+                .HasForeignKey(r => r.PostID)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }
